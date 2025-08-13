@@ -1,0 +1,19 @@
+{
+  "name": "expo-client-sdk",
+  "version": "1.0.0",
+  "description": "Expo client SDK with FaceTec integration",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm run build:native && npm run build:web",
+    "build:native": "cd native && npm run build:android",
+    "build:web": "cd web && npm run build",
+    "install:all": "npm install && cd native && npm install && cd ../web && npm install"
+  },
+  "dependencies": {
+    "@mitra-cristianmarques/expo-client-sdk-native": "file:native"
+  },
+  "devDependencies": {},
+  "keywords": ["expo", "react-native", "facetec", "biometric"],
+  "author": "Cristian Marques",
+  "license": "MIT"
+}

@@ -1,0 +1,31 @@
+{
+  "name": "@mitra-cristianmarques/expo-client-sdk-native",
+  "version": "1.0.0",
+  "description": "",
+  "main": "withBiometricSDK.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "build:android": "cd android && ./gradlew assembleRelease",
+    "clean:android": "cd android && ./gradlew clean"
+  },
+  "peerDependencies": {
+    "expo": ">=49.0.0",
+    "react-native": "^0.81.0"
+  },
+  "dependencies": {
+    "@expo/config-plugins": "~8.0.0",
+    "@react-native-community/cli-platform-android": "^20.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mitra-cristianmarques/expo-client-sdk.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mitra-cristianmarques/expo-client-sdk/issues"
+  },
+  "homepage": "https://github.com/mitra-cristianmarques/expo-client-sdk#readme"
+}

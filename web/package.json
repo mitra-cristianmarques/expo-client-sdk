@@ -1,0 +1,23 @@
+{
+    "name": "@mitra-cristianmarques/expo-client-sdk/web",
+    "version": "1.0.0",
+    "description": "",
+    "main": "withBiometricSDK.js",
+    "directories": {
+      "lib": "lib"
+    },
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/mitra-cristianmarques/expo-client-sdk.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+      "url": "https://github.com/mitra-cristianmarques/expo-client-sdk/issues"
+    },
+    "homepage": "https://github.com/mitra-cristianmarques/expo-client-sdk#readme"
+  }
+  

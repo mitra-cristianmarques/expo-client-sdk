@@ -1,0 +1,138 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="mitra.cristianmarques.facetec.test" >
+4
+5    <uses-sdk
+5-->/Users/cristian/Documents/mitra/POCs/npm-poc/expo-client-sdk/native/android/app/build/intermediates/tmp/manifest/test/debug/tempFile1ProcessTestManifest10883267910821728853.xml:5:5-74
+6        android:minSdkVersion="21"
+6-->/Users/cristian/Documents/mitra/POCs/npm-poc/expo-client-sdk/native/android/app/build/intermediates/tmp/manifest/test/debug/tempFile1ProcessTestManifest10883267910821728853.xml:5:15-41
+7        android:targetSdkVersion="33" />
+7-->/Users/cristian/Documents/mitra/POCs/npm-poc/expo-client-sdk/native/android/app/build/intermediates/tmp/manifest/test/debug/tempFile1ProcessTestManifest10883267910821728853.xml:5:42-71
+8
+9    <instrumentation
+9-->/Users/cristian/Documents/mitra/POCs/npm-poc/expo-client-sdk/native/android/app/build/intermediates/tmp/manifest/test/debug/tempFile1ProcessTestManifest10883267910821728853.xml:11:5-13:84
+10        android:name="android.test.InstrumentationTestRunner"
+10-->/Users/cristian/Documents/mitra/POCs/npm-poc/expo-client-sdk/native/android/app/build/intermediates/tmp/manifest/test/debug/tempFile1ProcessTestManifest10883267910821728853.xml:11:22-75
+11        android:label="Tests for mitra.cristianmarques.facetec.test"
+11-->/Users/cristian/Documents/mitra/POCs/npm-poc/expo-client-sdk/native/android/app/build/intermediates/tmp/manifest/test/debug/tempFile1ProcessTestManifest10883267910821728853.xml:13:22-82
+12        android:targetPackage="mitra.cristianmarques.facetec.test" />
+12-->/Users/cristian/Documents/mitra/POCs/npm-poc/expo-client-sdk/native/android/app/build/intermediates/tmp/manifest/test/debug/tempFile1ProcessTestManifest10883267910821728853.xml:12:22-80
+13
+14    <queries>
+14-->[androidx.test:runner:1.5.2] /Users/cristian/.gradle/caches/transforms-3/d8e539b54813dc266f08d326ab7f988d/transformed/runner-1.5.2/AndroidManifest.xml:24:5-28:15
+15        <package android:name="androidx.test.orchestrator" />
+15-->[androidx.test:runner:1.5.2] /Users/cristian/.gradle/caches/transforms-3/d8e539b54813dc266f08d326ab7f988d/transformed/runner-1.5.2/AndroidManifest.xml:25:9-62
+15-->[androidx.test:runner:1.5.2] /Users/cristian/.gradle/caches/transforms-3/d8e539b54813dc266f08d326ab7f988d/transformed/runner-1.5.2/AndroidManifest.xml:25:18-59
+16        <package android:name="androidx.test.services" />
+16-->[androidx.test:runner:1.5.2] /Users/cristian/.gradle/caches/transforms-3/d8e539b54813dc266f08d326ab7f988d/transformed/runner-1.5.2/AndroidManifest.xml:26:9-58
+16-->[androidx.test:runner:1.5.2] /Users/cristian/.gradle/caches/transforms-3/d8e539b54813dc266f08d326ab7f988d/transformed/runner-1.5.2/AndroidManifest.xml:26:18-55
+17        <package android:name="com.google.android.apps.common.testing.services" />
+17-->[androidx.test:runner:1.5.2] /Users/cristian/.gradle/caches/transforms-3/d8e539b54813dc266f08d326ab7f988d/transformed/runner-1.5.2/AndroidManifest.xml:27:9-83
+17-->[androidx.test:runner:1.5.2] /Users/cristian/.gradle/caches/transforms-3/d8e539b54813dc266f08d326ab7f988d/transformed/runner-1.5.2/AndroidManifest.xml:27:18-80
+18    </queries>
+19
+20    <uses-permission android:name="android.permission.REORDER_TASKS" />
+20-->[androidx.test:core:1.5.0] /Users/cristian/.gradle/caches/transforms-3/f682ec91408d935ebddaf8384b516454/transformed/jetified-core-1.5.0/AndroidManifest.xml:24:5-72
+20-->[androidx.test:core:1.5.0] /Users/cristian/.gradle/caches/transforms-3/f682ec91408d935ebddaf8384b516454/transformed/jetified-core-1.5.0/AndroidManifest.xml:24:22-69
+21
+22    <permission
+22-->[androidx.core:core:1.9.0] /Users/cristian/.gradle/caches/transforms-3/f5e4bff6dddc95c1e4569b2a41c648ee/transformed/core-1.9.0/AndroidManifest.xml:22:5-24:47
+23        android:name="mitra.cristianmarques.facetec.test.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+23-->[androidx.core:core:1.9.0] /Users/cristian/.gradle/caches/transforms-3/f5e4bff6dddc95c1e4569b2a41c648ee/transformed/core-1.9.0/AndroidManifest.xml:23:9-81
+24        android:protectionLevel="signature" />
+24-->[androidx.core:core:1.9.0] /Users/cristian/.gradle/caches/transforms-3/f5e4bff6dddc95c1e4569b2a41c648ee/transformed/core-1.9.0/AndroidManifest.xml:24:9-44
+25
+26    <uses-permission android:name="mitra.cristianmarques.facetec.test.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+26-->[androidx.core:core:1.9.0] /Users/cristian/.gradle/caches/transforms-3/f5e4bff6dddc95c1e4569b2a41c648ee/transformed/core-1.9.0/AndroidManifest.xml:26:5-97
+26-->[androidx.core:core:1.9.0] /Users/cristian/.gradle/caches/transforms-3/f5e4bff6dddc95c1e4569b2a41c648ee/transformed/core-1.9.0/AndroidManifest.xml:26:22-94
+27
+28    <application
+28-->/Users/cristian/Documents/mitra/POCs/npm-poc/expo-client-sdk/native/android/app/build/intermediates/tmp/manifest/test/debug/tempFile1ProcessTestManifest10883267910821728853.xml:7:5-9:19
+29        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+29-->[androidx.core:core:1.9.0] /Users/cristian/.gradle/caches/transforms-3/f5e4bff6dddc95c1e4569b2a41c648ee/transformed/core-1.9.0/AndroidManifest.xml:28:18-86
+30        android:debuggable="true" >
+30-->/Users/cristian/Documents/mitra/POCs/npm-poc/expo-client-sdk/native/android/app/build/intermediates/tmp/manifest/test/debug/tempFile1ProcessTestManifest10883267910821728853.xml:7:18-43
+31        <uses-library android:name="android.test.runner" />
+31-->/Users/cristian/Documents/mitra/POCs/npm-poc/expo-client-sdk/native/android/app/build/intermediates/tmp/manifest/test/debug/tempFile1ProcessTestManifest10883267910821728853.xml:8:9-60
+31-->/Users/cristian/Documents/mitra/POCs/npm-poc/expo-client-sdk/native/android/app/build/intermediates/tmp/manifest/test/debug/tempFile1ProcessTestManifest10883267910821728853.xml:8:23-57
+32
+33        <activity
+33-->[androidx.test:core:1.5.0] /Users/cristian/.gradle/caches/transforms-3/f682ec91408d935ebddaf8384b516454/transformed/jetified-core-1.5.0/AndroidManifest.xml:27:9-34:20
+34            android:name="androidx.test.core.app.InstrumentationActivityInvoker$BootstrapActivity"
+34-->[androidx.test:core:1.5.0] /Users/cristian/.gradle/caches/transforms-3/f682ec91408d935ebddaf8384b516454/transformed/jetified-core-1.5.0/AndroidManifest.xml:28:13-99
+35            android:exported="true"
+35-->[androidx.test:core:1.5.0] /Users/cristian/.gradle/caches/transforms-3/f682ec91408d935ebddaf8384b516454/transformed/jetified-core-1.5.0/AndroidManifest.xml:29:13-36
+36            android:theme="@style/WhiteBackgroundTheme" >
+36-->[androidx.test:core:1.5.0] /Users/cristian/.gradle/caches/transforms-3/f682ec91408d935ebddaf8384b516454/transformed/jetified-core-1.5.0/AndroidManifest.xml:30:13-56
+37            <intent-filter android:priority="-100" >
+37-->[androidx.test:core:1.5.0] /Users/cristian/.gradle/caches/transforms-3/f682ec91408d935ebddaf8384b516454/transformed/jetified-core-1.5.0/AndroidManifest.xml:31:13-33:29
+37-->[androidx.test:core:1.5.0] /Users/cristian/.gradle/caches/transforms-3/f682ec91408d935ebddaf8384b516454/transformed/jetified-core-1.5.0/AndroidManifest.xml:31:28-51
+38                <category android:name="android.intent.category.LAUNCHER" />
+38-->[androidx.test:core:1.5.0] /Users/cristian/.gradle/caches/transforms-3/f682ec91408d935ebddaf8384b516454/transformed/jetified-core-1.5.0/AndroidManifest.xml:32:17-77
+38-->[androidx.test:core:1.5.0] /Users/cristian/.gradle/caches/transforms-3/f682ec91408d935ebddaf8384b516454/transformed/jetified-core-1.5.0/AndroidManifest.xml:32:27-74
+39            </intent-filter>
+40        </activity>
+41        <activity
+41-->[androidx.test:core:1.5.0] /Users/cristian/.gradle/caches/transforms-3/f682ec91408d935ebddaf8384b516454/transformed/jetified-core-1.5.0/AndroidManifest.xml:35:9-42:20
+42            android:name="androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity"
+42-->[androidx.test:core:1.5.0] /Users/cristian/.gradle/caches/transforms-3/f682ec91408d935ebddaf8384b516454/transformed/jetified-core-1.5.0/AndroidManifest.xml:36:13-95
+43            android:exported="true"
+43-->[androidx.test:core:1.5.0] /Users/cristian/.gradle/caches/transforms-3/f682ec91408d935ebddaf8384b516454/transformed/jetified-core-1.5.0/AndroidManifest.xml:37:13-36
+44            android:theme="@style/WhiteBackgroundTheme" >
+44-->[androidx.test:core:1.5.0] /Users/cristian/.gradle/caches/transforms-3/f682ec91408d935ebddaf8384b516454/transformed/jetified-core-1.5.0/AndroidManifest.xml:38:13-56
+45            <intent-filter android:priority="-100" >
+45-->[androidx.test:core:1.5.0] /Users/cristian/.gradle/caches/transforms-3/f682ec91408d935ebddaf8384b516454/transformed/jetified-core-1.5.0/AndroidManifest.xml:31:13-33:29
+45-->[androidx.test:core:1.5.0] /Users/cristian/.gradle/caches/transforms-3/f682ec91408d935ebddaf8384b516454/transformed/jetified-core-1.5.0/AndroidManifest.xml:31:28-51
+46                <category android:name="android.intent.category.LAUNCHER" />
+46-->[androidx.test:core:1.5.0] /Users/cristian/.gradle/caches/transforms-3/f682ec91408d935ebddaf8384b516454/transformed/jetified-core-1.5.0/AndroidManifest.xml:32:17-77
+46-->[androidx.test:core:1.5.0] /Users/cristian/.gradle/caches/transforms-3/f682ec91408d935ebddaf8384b516454/transformed/jetified-core-1.5.0/AndroidManifest.xml:32:27-74
+47            </intent-filter>
+48        </activity>
+49        <activity
+49-->[androidx.test:core:1.5.0] /Users/cristian/.gradle/caches/transforms-3/f682ec91408d935ebddaf8384b516454/transformed/jetified-core-1.5.0/AndroidManifest.xml:43:9-50:20
+50            android:name="androidx.test.core.app.InstrumentationActivityInvoker$EmptyFloatingActivity"
+50-->[androidx.test:core:1.5.0] /Users/cristian/.gradle/caches/transforms-3/f682ec91408d935ebddaf8384b516454/transformed/jetified-core-1.5.0/AndroidManifest.xml:44:13-103
+51            android:exported="true"
+51-->[androidx.test:core:1.5.0] /Users/cristian/.gradle/caches/transforms-3/f682ec91408d935ebddaf8384b516454/transformed/jetified-core-1.5.0/AndroidManifest.xml:45:13-36
+52            android:theme="@style/WhiteBackgroundDialogTheme" >
+52-->[androidx.test:core:1.5.0] /Users/cristian/.gradle/caches/transforms-3/f682ec91408d935ebddaf8384b516454/transformed/jetified-core-1.5.0/AndroidManifest.xml:46:13-62
+53            <intent-filter android:priority="-100" >
+53-->[androidx.test:core:1.5.0] /Users/cristian/.gradle/caches/transforms-3/f682ec91408d935ebddaf8384b516454/transformed/jetified-core-1.5.0/AndroidManifest.xml:31:13-33:29
+53-->[androidx.test:core:1.5.0] /Users/cristian/.gradle/caches/transforms-3/f682ec91408d935ebddaf8384b516454/transformed/jetified-core-1.5.0/AndroidManifest.xml:31:28-51
+54                <category android:name="android.intent.category.LAUNCHER" />
+54-->[androidx.test:core:1.5.0] /Users/cristian/.gradle/caches/transforms-3/f682ec91408d935ebddaf8384b516454/transformed/jetified-core-1.5.0/AndroidManifest.xml:32:17-77
+54-->[androidx.test:core:1.5.0] /Users/cristian/.gradle/caches/transforms-3/f682ec91408d935ebddaf8384b516454/transformed/jetified-core-1.5.0/AndroidManifest.xml:32:27-74
+55            </intent-filter>
+56        </activity>
+57
+58        <provider
+58-->[androidx.emoji2:emoji2:1.2.0] /Users/cristian/.gradle/caches/transforms-3/f8c9f96e058eeab992770628d0528359/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:24:9-32:20
+59            android:name="androidx.startup.InitializationProvider"
+59-->[androidx.emoji2:emoji2:1.2.0] /Users/cristian/.gradle/caches/transforms-3/f8c9f96e058eeab992770628d0528359/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:25:13-67
+60            android:authorities="mitra.cristianmarques.facetec.test.androidx-startup"
+60-->[androidx.emoji2:emoji2:1.2.0] /Users/cristian/.gradle/caches/transforms-3/f8c9f96e058eeab992770628d0528359/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:26:13-68
+61            android:exported="false" >
+61-->[androidx.emoji2:emoji2:1.2.0] /Users/cristian/.gradle/caches/transforms-3/f8c9f96e058eeab992770628d0528359/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:27:13-37
+62            <meta-data
+62-->[androidx.emoji2:emoji2:1.2.0] /Users/cristian/.gradle/caches/transforms-3/f8c9f96e058eeab992770628d0528359/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:29:13-31:52
+63                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+63-->[androidx.emoji2:emoji2:1.2.0] /Users/cristian/.gradle/caches/transforms-3/f8c9f96e058eeab992770628d0528359/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:30:17-75
+64                android:value="androidx.startup" />
+64-->[androidx.emoji2:emoji2:1.2.0] /Users/cristian/.gradle/caches/transforms-3/f8c9f96e058eeab992770628d0528359/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:31:17-49
+65            <meta-data
+65-->[androidx.lifecycle:lifecycle-process:2.4.1] /Users/cristian/.gradle/caches/transforms-3/27047c5d0bb513344ae4ceefe258867b/transformed/jetified-lifecycle-process-2.4.1/AndroidManifest.xml:31:13-33:52
+66                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+66-->[androidx.lifecycle:lifecycle-process:2.4.1] /Users/cristian/.gradle/caches/transforms-3/27047c5d0bb513344ae4ceefe258867b/transformed/jetified-lifecycle-process-2.4.1/AndroidManifest.xml:32:17-78
+67                android:value="androidx.startup" />
+67-->[androidx.lifecycle:lifecycle-process:2.4.1] /Users/cristian/.gradle/caches/transforms-3/27047c5d0bb513344ae4ceefe258867b/transformed/jetified-lifecycle-process-2.4.1/AndroidManifest.xml:33:17-49
+68        </provider>
+69
+70        <meta-data
+70-->[com.facebook.soloader:soloader:0.10.5] /Users/cristian/.gradle/caches/transforms-3/4217c6f6afce770f78ec195e79a0b68c/transformed/jetified-soloader-0.10.5/AndroidManifest.xml:12:9-14:37
+71            android:name="com.facebook.soloader.enabled"
+71-->[com.facebook.soloader:soloader:0.10.5] /Users/cristian/.gradle/caches/transforms-3/4217c6f6afce770f78ec195e79a0b68c/transformed/jetified-soloader-0.10.5/AndroidManifest.xml:13:13-57
+72            android:value="false" />
+72-->[com.facebook.soloader:soloader:0.10.5] /Users/cristian/.gradle/caches/transforms-3/4217c6f6afce770f78ec195e79a0b68c/transformed/jetified-soloader-0.10.5/AndroidManifest.xml:14:13-34
+73    </application>
+74
+75</manifest>
