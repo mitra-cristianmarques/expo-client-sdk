@@ -5,7 +5,7 @@
     "module": "esnext",
     "target": "esnext",
     "lib": ["esnext", "dom"],
-    "types": ["react-native", "expo", "@types/node"],
+    "types": ["react-native", "@types/node"],
     "sourceMap": true,
     "declaration": true,
     "declarationMap": true,

@@ -1,0 +1,10 @@
+node_modules
+android/app/build
+.vscode
+.gradle
+.gitignore
+.npmrc
+.prettierrc
+.README.md
+.tsconfig.json
+.idea

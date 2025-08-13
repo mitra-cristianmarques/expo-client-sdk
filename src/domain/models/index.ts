@@ -1,2 +1,2 @@
-export { FacetecParams } from './FacetecParams'
-export { FacetecResponse } from './FactecResponse'
+export type { FacetecParams } from './FacetecParams'
+export type { FacetecResponse } from './FactecResponse'

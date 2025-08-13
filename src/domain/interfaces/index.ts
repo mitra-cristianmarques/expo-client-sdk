@@ -1,1 +1,1 @@
-export { IFacetec } from './IFacetec'
+export type { IFacetec } from './IFacetec'

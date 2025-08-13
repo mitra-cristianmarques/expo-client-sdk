@@ -6,9 +6,10 @@ import {
   withInfoPlist,
   withXcodeProject,
   withDangerousMod,
-  createRunOncePlugin,
+  createRunOncePlugin
 } from '@expo/config-plugins'
 import { ExpoConfig } from '@expo/config-types'
+
 
 // Helper to copy files
 function copyFile(src: string, dest: string) {
