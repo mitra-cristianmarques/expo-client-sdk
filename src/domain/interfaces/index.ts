@@ -1,0 +1,1 @@
+export { IFacetec } from './IFacetec'

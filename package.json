@@ -1,19 +1,37 @@
 {
-  "name": "expo-client-sdk",
+  "name": "@mitra-cristianmarques/expo-client-sdk-native",
   "version": "1.0.0",
-  "description": "Expo client SDK with FaceTec integration",
-  "main": "index.js",
+  "description": "",
+  "main": "dist/withBiometricSDK.js",
+  "directories": {
+    "lib": "lib",
+    "android": "android",
+    "ios": "ios"
+  },
   "scripts": {
-    "build": "npm run build:native && npm run build:web",
-    "build:native": "cd native && npm run build:android",
-    "build:web": "cd web && npm run build",
-    "install:all": "npm install && cd native && npm install && cd ../web && npm install"
+    "build:android": "cd android && ./gradlew assembleRelease",
+    "clean:android": "cd android && ./gradlew clean"
+  },
+  "peerDependencies": {
+    "expo": ">=49.0.0",
+    "react-native": "^0.81.0"
   },
   "dependencies": {
-    "@mitra-cristianmarques/expo-client-sdk-native": "file:native"
+    "@expo/config-plugins": "~8.0.0",
+    "@react-native-community/cli-platform-android": "^20.0.0"
   },
-  "devDependencies": {},
-  "keywords": ["expo", "react-native", "facetec", "biometric"],
-  "author": "Cristian Marques",
-  "license": "MIT"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mitra-cristianmarques/expo-client-sdk.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mitra-cristianmarques/expo-client-sdk/issues"
+  },
+  "homepage": "https://github.com/mitra-cristianmarques/expo-client-sdk#readme",
+  "devDependencies": {
+    "@types/node": "^24.2.1",
+    "typescript": "^5.9.2"
+  }
 }
