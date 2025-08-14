@@ -1,24 +1,36 @@
 // Top-level build file for FaceTec Android Library
-buildscript {
-    ext {
-        buildToolsVersion = "33.0.0"
-        minSdkVersion = 21
-        compileSdkVersion = 33
-        targetSdkVersion = 33
+plugins {
+    id 'com.android.library'
+    id 'expo-module-gradle-plugin'
+}
+
+apply plugin: 'com.android.library'
+
+group = 'host.exp.exponent'
+version = '17.0.0'
+
+android {
+    namespace: "mitra.biometric.sdk"
+    compileSdkVersion 33
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 33
     }
-    repositories {
-        google()
-        mavenCentral()
-    }
-    dependencies {
-        classpath("com.android.tools.build:gradle:7.4.2")
+
+    lintOptions {
+        abortOnError false
     }
 }
 
 allprojects {
     repositories {
-        google()
-        mavenCentral()
-        maven { url 'https://www.jitpack.io' }
+        flatDir {
+            dirs 'libs/facetec'
+        }
     }
+}
+
+dependencies {
+    implementation(name: 'facetec-sdk-9.7.80-minimal', ext: 'aar')
 }

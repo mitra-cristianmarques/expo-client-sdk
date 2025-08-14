@@ -8,3 +8,8 @@ android/app/build
 .README.md
 .tsconfig.json
 .idea
+
+.eslintrc.js
+src/
+plugin/src/
+node_modules/
