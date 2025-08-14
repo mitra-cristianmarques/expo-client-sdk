@@ -1,6 +1,7 @@
 import { NativeModules } from 'react-native'
 import { IFacetec } from './domain'
 
+
 type biometricAction = 'authenticateUser' | 'enrollUser'
 
 class FactecSDK {

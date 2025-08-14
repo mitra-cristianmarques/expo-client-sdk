@@ -4,18 +4,18 @@ plugins {
     id 'expo-module-gradle-plugin'
 }
 
-apply plugin: 'com.android.library'
-
 group = 'host.exp.exponent'
-version = '17.0.0'
+version = '1.0.0'
 
 android {
-    namespace: "mitra.biometric.sdk"
+    namespace "mitra.biometric.sdk"
     compileSdkVersion 33
 
     defaultConfig {
         minSdkVersion 21
         targetSdkVersion 33
+        versionCode 1
+        versionName "1.0.0"
     }
 
     lintOptions {
@@ -23,14 +23,31 @@ android {
     }
 }
 
-allprojects {
-    repositories {
-        flatDir {
-            dirs 'libs/facetec'
-        }
+repositories {
+    flatDir {
+        dirs 'libs/facetec'
     }
 }
 
 dependencies {
-    implementation(name: 'facetec-sdk-9.7.80-minimal', ext: 'aar')
+    implementation files('libs/facetec/facetec-sdk-9.7.80-minimal.aar')
+}
+
+// Fix for Gradle implicit task dependency error
+afterEvaluate {
+    android.libraryVariants.all { variant ->
+        def variantName = variant.name.capitalize()
+        def packageTaskName = "package${variantName}Resources"
+        def generateTaskName = "generate${variantName}ResValues"
+        
+        def packageTask = tasks.findByName(packageTaskName)
+        def generateTask = tasks.findByName(generateTaskName)
+        
+        if (packageTask && generateTask) {
+            logger.lifecycle("Adding dependency: ${packageTaskName} dependsOn ${generateTaskName}")
+            packageTask.dependsOn(generateTask)
+        } else {
+            logger.error("Task not found: packageTask=${packageTask}, generateTask=${generateTask}")
+        }
+    }
 }

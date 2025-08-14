@@ -1,6 +1,6 @@
 {
   "name": "@mitra-cristianmarques/expo-biometrics-sdk",
-  "version": "1.0.1",
+  "version": "1.0.12",
   "description": "",
   "main": "build/index.js",
   "types": "build/index.d.ts",
@@ -31,8 +31,9 @@
     "react-native": "*"
   },
   "devDependencies": {
-    "@types/node": "^24.2.1",
-    "expo-module-scripts": "^4.1.10"
+    "expo-module-scripts": "^4.1.10",
+    "react-native": "*",
+    "@types/react-native": "*"
   },
   "author": "",
   "license": "ISC"
