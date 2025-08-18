@@ -6,10 +6,20 @@ type biometricAction = 'authenticateUser' | 'enrollUser'
 
 class FactecSDK {
   private static instance: FactecSDK
-  private facetec: IFacetec
+  private facetec: IFacetec | null = null
 
   private constructor() {
-    this.facetec = NativeModules.FaceTecModule
+    // Don't initialize facetec here - do it lazily when needed
+  }
+
+  private getFacetec(): IFacetec {
+    if (!this.facetec) {
+      this.facetec = NativeModules.MitraBiometricsSdk
+      if (!this.facetec) {
+        throw new Error('MitraBiometricsSdk native module not found. Make sure the plugin is properly configured.')
+      }
+    }
+    return this.facetec
   }
 
   public static getInstance(): FactecSDK {
@@ -24,7 +34,8 @@ class FactecSDK {
     externalRefId: string,
     document?: string
   ) {
-    return this.facetec.Facetec({
+    const facetec = this.getFacetec()
+    return facetec.Facetec({
       actionFacetec: action,
       externalDatabaseRefID: externalRefId,
       cpf: document,
@@ -32,4 +43,17 @@ class FactecSDK {
   }
 }
 
-export const MitraFacetecSDK = FactecSDK.getInstance()
+// Export the class instead of an instance
+export { FactecSDK }
+
+// Create a lazy getter that only creates the instance when accessed
+let _mitraFacetecSDK: FactecSDK | null = null
+
+export const MitraFacetecSDK = {
+  get requestBiometricScreen() {
+    if (!_mitraFacetecSDK) {
+      _mitraFacetecSDK = FactecSDK.getInstance()
+    }
+    return _mitraFacetecSDK.requestBiometricScreen.bind(_mitraFacetecSDK)
+  }
+}

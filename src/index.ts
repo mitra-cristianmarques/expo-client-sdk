@@ -1,2 +1,2 @@
 export * from './domain'
-export { MitraFacetecSDK } from './MitraFacetecSdk'
+export { FactecSDK, MitraFacetecSDK } from './MitraFacetecSdk'

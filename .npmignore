@@ -12,3 +12,5 @@ tsconfig.json
 /src/
 plugin/src/
 node_modules/
+android/.gradle/
+verdaccio/

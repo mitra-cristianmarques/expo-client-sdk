@@ -8,7 +8,7 @@ group = 'host.exp.exponent'
 version = '1.0.0'
 
 android {
-    namespace "mitra.biometric.sdk"
+    namespace "br.com.mitra.biometricsdk"
     compileSdkVersion 33
 
     defaultConfig {
@@ -27,27 +27,25 @@ repositories {
     flatDir {
         dirs 'libs/facetec'
     }
+    google()
+    mavenCentral()
 }
 
 dependencies {
-    implementation files('libs/facetec/facetec-sdk-9.7.80-minimal.aar')
-}
-
-// Fix for Gradle implicit task dependency error
-afterEvaluate {
-    android.libraryVariants.all { variant ->
-        def variantName = variant.name.capitalize()
-        def packageTaskName = "package${variantName}Resources"
-        def generateTaskName = "generate${variantName}ResValues"
-        
-        def packageTask = tasks.findByName(packageTaskName)
-        def generateTask = tasks.findByName(generateTaskName)
-        
-        if (packageTask && generateTask) {
-            logger.lifecycle("Adding dependency: ${packageTaskName} dependsOn ${generateTaskName}")
-            packageTask.dependsOn(generateTask)
-        } else {
-            logger.error("Task not found: packageTask=${packageTask}, generateTask=${generateTask}")
-        }
-    }
+    compileOnly files('libs/facetec/facetec-sdk-9.7.80-minimal.aar')
+    
+    // OkHttp for networking
+    implementation 'com.squareup.okhttp3:okhttp:4.9.3'
+    implementation 'com.squareup.okio:okio:2.10.0'
+    
+    // AndroidX libraries
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    // implementation 'androidx.databinding:databinding-runtime:7.4.2'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    
+    // React Native bridge (compileOnly for library)
+    compileOnly 'com.facebook.react:react-native:0.72.0'
+    
+    // FaceTec SDK dependencies
+    implementation 'androidx.core:core:1.9.0'
 }

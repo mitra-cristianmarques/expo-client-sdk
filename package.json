@@ -1,11 +1,12 @@
 {
-  "name": "@mitra-cristianmarques/expo-biometrics-sdk",
-  "version": "1.0.12",
+  "name": "expo-biometrics-sdk",
+  "version": "1.0.24",
   "description": "",
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "scripts": {
     "build": "expo-module build",
+    "build:prod": "expo-module build",
     "clean": "expo-module clean",
     "test": "expo-module test",
     "prepare": "expo-module prepare",
@@ -13,9 +14,6 @@
     "expo-module": "expo-module",
     "build:android": "cd android && ./gradlew assembleRelease",
     "clean:android": "cd android && ./gradlew clean"
-  },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
   },
   "repository": {
     "type": "git",
@@ -33,7 +31,8 @@
   "devDependencies": {
     "expo-module-scripts": "^4.1.10",
     "react-native": "*",
-    "@types/react-native": "*"
+    "@types/react-native": "*",
+    "@types/node": "^20.0.0"
   },
   "author": "",
   "license": "ISC"
