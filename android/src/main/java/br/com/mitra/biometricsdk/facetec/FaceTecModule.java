@@ -65,7 +65,7 @@ public class FaceTecModule extends ReactContextBaseJavaModule {
 
     @Override
     public String getName() {
-        return "FacetecSDK";
+        return "MitraBiometricsSdk";
     }
 
     @ReactMethod

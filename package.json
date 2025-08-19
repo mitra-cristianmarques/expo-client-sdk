@@ -1,7 +1,8 @@
 {
   "name": "expo-biometrics-sdk",
-  "version": "1.0.24",
+  "version": "1.0.26",
   "description": "",
+  "productName": "expo-biometrics-sdk",
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "scripts": {

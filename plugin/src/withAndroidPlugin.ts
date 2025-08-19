@@ -6,6 +6,37 @@ export function withAndroidPlugin(config: ExpoConfig) {
     'android.permission.CAMERA',
   ])
 
+  // Add the SampleAppActivity to AndroidManifest.xml
+  config = withAndroidManifest(config, (config) => {
+    if (!config.modResults.manifest.application) {
+      config.modResults.manifest.application = [];
+    }
+    
+    const application = config.modResults.manifest.application[0];
+    if (application && !application.activity) {
+      application.activity = [];
+    }
+    
+    if (application && application.activity) {
+      // Check if SampleAppActivity is already declared
+      const hasSampleAppActivity = application.activity.some(
+        (activity: any) => activity.$ && activity.$.name === 'br.com.mitra.biometricsdk.SampleAppActivity'
+      );
+      
+      if (!hasSampleAppActivity) {
+        application.activity.push({
+          $: {
+            'android:name': 'br.com.mitra.biometricsdk.SampleAppActivity',
+            'android:exported': 'false',
+            'android:theme': '@android:style/Theme.NoTitleBar.Fullscreen'
+          }
+        });
+      }
+    }
+    
+    return config;
+  });
+
   // Add the native module to MainApplication.java/kt
   config = withMainApplication(config, (config) => {
     if (!config.modResults.contents.includes('MitraBiometricsSdkPackage')) {
