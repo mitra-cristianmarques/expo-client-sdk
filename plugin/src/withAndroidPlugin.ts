@@ -1,5 +1,7 @@
 import { ExpoConfig } from '@expo/config-types'
-import { AndroidConfig, withAndroidManifest, withMainApplication } from '@expo/config-plugins'
+import { AndroidConfig, withAndroidManifest, withMainApplication, withDangerousMod } from '@expo/config-plugins'
+import * as fs from 'fs'
+import * as path from 'path'
 
 export function withAndroidPlugin(config: ExpoConfig) {
   config = AndroidConfig.Permissions.withPermissions(config, [
@@ -36,6 +38,65 @@ export function withAndroidPlugin(config: ExpoConfig) {
     
     return config;
   });
+
+  // Copy FaceTec SDK AAR to client app's libs directory
+  config = withDangerousMod(config, [
+    'android',
+    (config) => {
+      const clientLibsDir = path.join(config.modRequest.platformProjectRoot, 'app', 'libs')
+      const sdkLibsDir = path.join(config.modRequest.projectRoot, 'node_modules', 'expo-biometrics-sdk', 'android', 'libs', 'facetec')
+      
+      // Create libs directory if it doesn't exist
+      if (!fs.existsSync(clientLibsDir)) {
+        fs.mkdirSync(clientLibsDir, { recursive: true })
+      }
+      
+      // Copy FaceTec SDK AAR
+      const facetecAar = path.join(sdkLibsDir, 'facetec-sdk-9.7.80-minimal.aar')
+      if (fs.existsSync(facetecAar)) {
+        const destAar = path.join(clientLibsDir, 'facetec-sdk-9.7.80-minimal.aar')
+        fs.copyFileSync(facetecAar, destAar)
+        console.log('✅ Copied FaceTec SDK AAR to client app')
+      } else {
+        console.warn('⚠️ FaceTec SDK AAR not found in:', facetecAar)
+      }
+      
+      return config
+    }
+  ])
+
+  // Add FaceTec SDK dependency to build.gradle
+  config = withDangerousMod(config, [
+    'android',
+    (config) => {
+      const buildGradlePath = path.join(config.modRequest.platformProjectRoot, 'app', 'build.gradle')
+      
+      if (fs.existsSync(buildGradlePath)) {
+        let buildGradleContent = fs.readFileSync(buildGradlePath, 'utf8')
+        
+        // Check if FaceTec SDK dependency is already added
+        if (!buildGradleContent.includes('facetec-sdk-9.7.80-minimal.aar')) {
+          // Find the dependencies block and add the FaceTec SDK
+          const dependenciesIndex = buildGradleContent.indexOf('dependencies {')
+          if (dependenciesIndex !== -1) {
+            const insertIndex = dependenciesIndex + 'dependencies {'.length
+            
+            const facetecDependency = '\n    implementation fileTree(dir: "libs", include: ["*.aar"])\n'
+            
+            buildGradleContent = 
+              buildGradleContent.slice(0, insertIndex) + 
+              facetecDependency + 
+              buildGradleContent.slice(insertIndex)
+            
+            fs.writeFileSync(buildGradlePath, buildGradleContent)
+            console.log('✅ Added FaceTec SDK dependency to build.gradle')
+          }
+        }
+      }
+      
+      return config
+    }
+  ])
 
   // Add the native module to MainApplication.java/kt
   config = withMainApplication(config, (config) => {
