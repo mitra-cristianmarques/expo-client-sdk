@@ -44,21 +44,44 @@ export function withAndroidPlugin(config: ExpoConfig) {
     'android',
     (config) => {
       const clientLibsDir = path.join(config.modRequest.platformProjectRoot, 'app', 'libs')
-      const sdkLibsDir = path.join(config.modRequest.projectRoot, 'node_modules', 'expo-biometrics-sdk', 'android', 'libs', 'facetec')
+      
+      // Try multiple possible paths for the FaceTec SDK AAR
+      const possiblePaths = [
+        // Path 1: From the source SDK directory (when developing locally)
+        path.join(config.modRequest.projectRoot, 'node_modules', 'expo-biometrics-sdk', 'android', 'libs', 'facetec', 'facetec-sdk-full.aar'),
+        // Path 2: From the installed package (when published)
+        path.join(config.modRequest.projectRoot, 'node_modules', 'expo-biometrics-sdk', 'android', 'libs', 'facetec', 'facetec-sdk-full.aar'),
+        // Path 3: Alternative path structure
+        path.join(config.modRequest.projectRoot, 'node_modules', 'expo-biometrics-sdk', 'android', 'libs', 'facetec-sdk-full.aar'),
+        // Path 4: From the plugin's own directory
+        path.join(__dirname, '..', '..', 'android', 'libs', 'facetec', 'facetec-sdk-full.aar'),
+        // Path 5: From the plugin's build directory
+        path.join(__dirname, '..', '..', 'android', 'libs', 'facetec', 'facetec-sdk-full.aar')
+      ]
       
       // Create libs directory if it doesn't exist
       if (!fs.existsSync(clientLibsDir)) {
         fs.mkdirSync(clientLibsDir, { recursive: true })
       }
       
-      // Copy FaceTec SDK AAR
-      const facetecAar = path.join(sdkLibsDir, 'facetec-sdk-9.7.80-minimal.aar')
-      if (fs.existsSync(facetecAar)) {
-        const destAar = path.join(clientLibsDir, 'facetec-sdk-9.7.80-minimal.aar')
-        fs.copyFileSync(facetecAar, destAar)
-        console.log('✅ Copied FaceTec SDK AAR to client app')
-      } else {
-        console.warn('⚠️ FaceTec SDK AAR not found in:', facetecAar)
+      // Try to find and copy the FaceTec SDK AAR
+      let aarCopied = false
+      for (const aarPath of possiblePaths) {
+        if (fs.existsSync(aarPath)) {
+          const destAar = path.join(clientLibsDir, 'facetec-sdk-full.aar')
+          fs.copyFileSync(aarPath, destAar)
+          console.log('✅ Copied FaceTec SDK AAR to client app from:', aarPath)
+          aarCopied = true
+          break
+        }
+      }
+      
+      if (!aarCopied) {
+        console.error('❌ FaceTec SDK AAR not found in any of the expected paths:')
+        possiblePaths.forEach((path, index) => {
+          console.error(`   Path ${index + 1}:`, path)
+        })
+        throw new Error('FaceTec SDK AAR file not found. Please ensure the SDK is properly built and contains the AAR file.')
       }
       
       return config
@@ -75,7 +98,7 @@ export function withAndroidPlugin(config: ExpoConfig) {
         let buildGradleContent = fs.readFileSync(buildGradlePath, 'utf8')
         
         // Check if FaceTec SDK dependency is already added
-        if (!buildGradleContent.includes('facetec-sdk-9.7.80-minimal.aar')) {
+        if (!buildGradleContent.includes('facetec-sdk-full.aar')) {
           // Find the dependencies block and add the FaceTec SDK
           const dependenciesIndex = buildGradleContent.indexOf('dependencies {')
           if (dependenciesIndex !== -1) {

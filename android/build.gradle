@@ -1,7 +1,7 @@
 // Top-level build file for FaceTec Android Library
+
 plugins {
-    id 'com.android.library'
-    id 'expo-module-gradle-plugin'
+    id 'com.android.library' version '8.3.0'
 }
 
 group = 'host.exp.exponent'
@@ -9,13 +9,40 @@ version = '1.0.0'
 
 android {
     namespace "br.com.mitra.biometricsdk"
-    compileSdkVersion 33
+    compileSdkVersion 34
 
     defaultConfig {
         minSdkVersion 21
-        targetSdkVersion 33
+        targetSdkVersion 34
         versionCode 1
         versionName "1.0.0"
+    }
+
+    // Development optimizations
+    buildTypes {
+        debug {
+            minifyEnabled false
+            debuggable true
+            // Enable incremental compilation
+            incremental true
+        }
+        release {
+            minifyEnabled false
+            debuggable false
+        }
+    }
+
+    // Speed up development builds
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    // Enable parallel execution
+    dexOptions {
+        preDexLibraries = false
+        maxProcessCount = 8
+        javaMaxHeapSize = "4g"
     }
 
     lintOptions {
@@ -29,23 +56,30 @@ repositories {
     }
     google()
     mavenCentral()
+    maven { url "https://www.jitpack.io" }
+    maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+    maven { url "https://maven.google.com" }
+    maven {
+        url "https://repo1.maven.org/maven2"
+        name "Maven Central"
+    }
+    gradlePluginPortal()
 }
 
 dependencies {
-    compileOnly files('libs/facetec/facetec-sdk-9.7.80-minimal.aar')
+    compileOnly files('libs/facetec/facetec-sdk-full.aar')
     
     // OkHttp for networking
-    implementation 'com.squareup.okhttp3:okhttp:4.9.3'
-    implementation 'com.squareup.okio:okio:2.10.0'
+    implementation 'com.squareup.okhttp3:okhttp:4.12.0'
+    implementation 'com.squareup.okio:okio:3.8.0'
     
     // AndroidX libraries
-    implementation 'androidx.appcompat:appcompat:1.6.1'
-    // implementation 'androidx.databinding:databinding-runtime:7.4.2'
+    implementation 'androidx.appcompat:appcompat:1.7.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     
-    // React Native bridge (compileOnly for library)
-    compileOnly 'com.facebook.react:react-native:0.72.0'
+    // React Native bridge - using older stable version
+    compileOnly 'com.facebook.react:react-native:0.71.8'
     
     // FaceTec SDK dependencies
-    implementation 'androidx.core:core:1.9.0'
+    implementation 'androidx.core:core:1.12.0'
 }
