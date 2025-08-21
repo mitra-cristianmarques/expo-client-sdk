@@ -2,12 +2,11 @@ package br.com.mitra.biometricsdk;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.view.View;
-import android.widget.Button;
 import android.util.Log;
-import android.os.Bundle;
 
-import br.com.mitra.biometricsdk.processors.Processor;
+import br.com.mitra.biometricsdk.common.config.BiometricSDKConfiguration;
+import br.com.mitra.biometricsdk.domain.models.SDKConfiguration;
+import br.com.mitra.biometricsdk.domain.models.SDKTheme;
 
 import com.facebook.react.bridge.NativeModule;
 import com.facebook.react.bridge.ReactApplicationContext;
@@ -19,9 +18,9 @@ import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.bridge.WritableNativeMap;
 import com.facebook.react.bridge.Promise;
-import  com.facebook.react.bridge.ReadableMap;
-import java.util.Map;
+import com.facebook.react.bridge.ReadableMap;
 import java.util.HashMap;
+import java.util.Map;
 
 public class FaceTecModule extends ReactContextBaseJavaModule {
 
@@ -50,7 +49,7 @@ public class FaceTecModule extends ReactContextBaseJavaModule {
 
                 //Depois de tudo terminado na SDK retorna para o React Native true ou false
                 myPromise.resolve(map);
-            }catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
@@ -71,11 +70,14 @@ public class FaceTecModule extends ReactContextBaseJavaModule {
     @ReactMethod
     public void Facetec(ReadableMap params, final Promise promise) {
         try {
+            Log.d("FaceTecModule", "Facetec method called with params: " + params.toString());
             Intent intent = new Intent(getCurrentActivity(), SampleAppActivity.class);
-
+            Log.i("FaceTecModule", "Facetec");
             String inicialModule = params.getString("actionFacetec");
             String externalID = params.getString("externalDatabaseRefID");
             String cpf = params.getString("cpf");
+
+            Log.d("FaceTecModule", "Params - actionFacetec: " + inicialModule + ", externalID: " + externalID + ", cpf: " + cpf);
 
             //Seta variavel que será buscada na SampleAppActivity
             intent.putExtra("inicialModule", inicialModule);
@@ -91,4 +93,40 @@ public class FaceTecModule extends ReactContextBaseJavaModule {
         }
 
     }
+    @ReactMethod
+    public void testConfiguration(final Promise promise) {
+        try {
+            Log.d("FaceTecModule", "testConfiguration method called");
+            SDKConfiguration configuration = BiometricSDKConfiguration.INSTANCE.getConfiguration();
+            if(configuration == null) {
+                promise.resolve(null);
+                return;
+            }
+            promise.resolve(configuration.serializeForReactNative());
+        } catch (Exception e) {
+            promise.reject("Fetch SDK configuration error", e);
+        }
+    }
+
+    @ReactMethod
+    public void configure(ReadableMap theme, ReadableMap options, final Promise promise) {
+        try {
+            Log.d("FaceTecModule", "configure method called");
+            
+            // Convert ReadableMap to Map using built-in method
+            Map<String, Object> themeMap = theme != null ? theme.toHashMap() : new HashMap<>();
+            Map<String, Object> optionsMap = options != null ? options.toHashMap() : new HashMap<>();
+            
+            SDKTheme configurationTheme = new SDKTheme().fromMap(themeMap);
+            SDKConfiguration configuration = new SDKConfiguration().fromMap(optionsMap);
+            BiometricSDKConfiguration.INSTANCE.initializeConfguration(configurationTheme, configuration);
+            
+            promise.resolve(true);
+        } catch (Exception e) {
+            Log.e("FaceTecModule", "Error in configure: " + e.getMessage());
+            promise.reject("Error", e);
+        }
+    }
+
+
 }

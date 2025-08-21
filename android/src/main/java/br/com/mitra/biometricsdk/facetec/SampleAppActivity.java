@@ -8,11 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 
-// import androidx.databinding.DataBindingUtil;
-
-// import br.com.mitra.biometricsdk.databinding.ActivityMainBinding;
 import com.facetec.sdk.FaceTecIDScanResult;
 import com.facetec.sdk.FaceTecSDK;
 import com.facetec.sdk.FaceTecSessionResult;
@@ -66,8 +62,12 @@ public class SampleAppActivity extends Activity {
 
         // Optional - Preload resources related to the FaceTec SDK so that it can be run as soon as possible.
         //            Run this as soon as you think you might use the SDK for optimal start up performance.
-        FaceTecSDK.preload(this);
-
+        try {
+            FaceTecSDK.preload(this);
+        } catch (Exception e) {
+            Log.e("DEBUG_BIOMETRICS", "❌ Error in FaceTecSDK.preload(): " + e.getMessage(), e);
+            e.printStackTrace();
+        }
         configureInitialSampleAppUI();
 
         utils.displayStatus("Initializing...");
@@ -82,7 +82,7 @@ public class SampleAppActivity extends Activity {
 
         // Set the FaceTec Customization defined in the Config File.
         SampleAppUtilities.setVocalGuidanceSoundFiles();
-        utils.setUpVocalGuidancePlayers();
+        utils.setUpVocalGuidancePlayers();        
     }
 
     @Override
