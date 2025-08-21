@@ -1,8 +1,19 @@
 // Top-level build file for FaceTec Android Library
 
-plugins {
-    id 'com.android.library' version '8.3.0'
+buildscript {
+    ext.kotlin_version = '1.8.20'
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:8.0.2'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
 }
+
+apply plugin: 'com.android.library'
+apply plugin: 'org.jetbrains.kotlin.android'
 
 group = 'host.exp.exponent'
 version = '1.0.0'
@@ -23,8 +34,6 @@ android {
         debug {
             minifyEnabled false
             debuggable true
-            // Enable incremental compilation
-            incremental true
         }
         release {
             minifyEnabled false
@@ -34,15 +43,13 @@ android {
 
     // Speed up development builds
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 
-    // Enable parallel execution
-    dexOptions {
-        preDexLibraries = false
-        maxProcessCount = 8
-        javaMaxHeapSize = "4g"
+    // Kotlin configuration
+    kotlinOptions {
+        jvmTarget = '17'
     }
 
     lintOptions {
@@ -77,8 +84,8 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.7.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     
-    // React Native bridge - using older stable version
-    compileOnly 'com.facebook.react:react-native:0.71.8'
+    // React Native bridge - using Expo React Native
+    compileOnly 'com.facebook.react:react-native:+'
     
     // FaceTec SDK dependencies
     implementation 'androidx.core:core:1.12.0'

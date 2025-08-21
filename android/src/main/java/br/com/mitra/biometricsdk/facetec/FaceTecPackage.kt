@@ -1,5 +1,5 @@
 // File: android/app/src/main/java/br/com/mitra/multibeneficios/vinhedo/FaceTecPackage.java
-package br.com.mitra.biometricsdk
+package br.com.mitra.biometricsdk.facetec
 
 import com.facebook.react.ReactPackage
 

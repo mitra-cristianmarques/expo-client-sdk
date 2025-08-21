@@ -5,7 +5,7 @@ package br.com.mitra.biometricsdk.processors
 
 import android.content.Context
 import android.util.Log
-import br.com.mitra.biometricsdk.SampleAppActivity
+import br.com.mitra.biometricsdk.facetec.SampleAppActivity
 import com.facetec.sdk.FaceTecCustomization
 import com.facetec.sdk.FaceTecIDScanProcessor
 import com.facetec.sdk.FaceTecIDScanResult

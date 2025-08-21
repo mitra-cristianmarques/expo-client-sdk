@@ -1,4 +1,4 @@
-package br.com.mitra.biometricsdk
+package br.com.mitra.biometricsdk.facetec
 
 import android.animation.ArgbEvaluator
 import android.animation.ValueAnimator
@@ -16,6 +16,7 @@ import android.view.MotionEvent
 import android.view.View
 import androidx.appcompat.widget.AppCompatButton
 import androidx.core.content.ContextCompat
+import br.com.mitra.biometricsdk.R
 
 class SampleAppActionButton : AppCompatButton {
     var enabledBackgroundColor: Int = Color.parseColor("#417FB2")

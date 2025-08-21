@@ -1,5 +1,6 @@
 package br.com.mitra.biometricsdk
 
+import br.com.mitra.biometricsdk.facetec.FaceTecModule
 import com.facebook.react.ReactPackage
 
 class MitraBiometricsSdkPackage : ReactPackage {

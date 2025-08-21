@@ -1,6 +1,6 @@
 {
   "name": "expo-biometrics-sdk",
-  "version": "1.0.35",
+  "version": "1.0.52",
   "description": "",
   "productName": "expo-biometrics-sdk",
   "main": "build/index.js",
@@ -23,7 +23,6 @@
   },
   "homepage": "https://github.com/mitra-cristianmarques/expo-client-sdk#readme",
   "peerDependencies": {
-    "@expo/config-types": "*",
     "expo": "*",
     "react-native": "*"
   },
@@ -31,6 +30,7 @@
     "expo-module-scripts": "^4.1.10",
     "react-native": "*",
     "@types/react-native": "*",
+    "@expo/config-types": "*",
     "@types/node": "^20.0.0"
   },
   "author": "",

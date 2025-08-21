@@ -39,6 +39,74 @@ export function withAndroidPlugin(config: ExpoConfig) {
     return config;
   });
 
+  // Configure autolinking by adding to settings.gradle
+  config = withDangerousMod(config, [
+    'android',
+    (config) => {
+      const settingsGradlePath = path.join(config.modRequest.platformProjectRoot, 'settings.gradle')
+      
+      if (fs.existsSync(settingsGradlePath)) {
+        let settingsGradleContent = fs.readFileSync(settingsGradlePath, 'utf8')
+        
+        // Check if our module is already included
+        if (!settingsGradleContent.includes('expo-biometrics-sdk')) {
+          // Try to find the includeProject section first
+          let insertIndex = -1
+          let newIncludeLine = ''
+          
+          if (settingsGradleContent.includes('includeProject')) {
+            // Find the includeProject section and add our module
+            const includeProjectIndex = settingsGradleContent.indexOf('includeProject')
+            insertIndex = settingsGradleContent.indexOf('\n', includeProjectIndex) + 1
+            newIncludeLine = "includeProject(':expo-biometrics-sdk')\n"
+          } else if (settingsGradleContent.includes('include ')) {
+            // Find the include section and add our module
+            const includeIndex = settingsGradleContent.indexOf('include ')
+            insertIndex = settingsGradleContent.indexOf('\n', includeIndex) + 1
+            newIncludeLine = "include ':expo-biometrics-sdk'\n"
+          } else {
+            // If no include statements found, add at the end before the last line
+            const lines = settingsGradleContent.split('\n')
+            insertIndex = settingsGradleContent.length - lines[lines.length - 1].length - 1
+            newIncludeLine = "\ninclude ':expo-biometrics-sdk'\n"
+          }
+          
+          if (insertIndex !== -1) {
+            settingsGradleContent = 
+              settingsGradleContent.slice(0, insertIndex) + 
+              newIncludeLine + 
+              settingsGradleContent.slice(insertIndex)
+            
+            // Also add the project configuration
+            const projectConfigIndex = settingsGradleContent.indexOf('project(')
+            if (projectConfigIndex !== -1) {
+              const projectConfigEndIndex = settingsGradleContent.indexOf('\n', projectConfigIndex)
+              const insertProjectIndex = projectConfigEndIndex + 1
+              
+              const projectConfigLine = "project(':expo-biometrics-sdk').projectDir = new File(rootProject.projectDir, 'node_modules/expo-biometrics-sdk/android')\n"
+              
+              settingsGradleContent = 
+                settingsGradleContent.slice(0, insertProjectIndex) + 
+                projectConfigLine + 
+                settingsGradleContent.slice(insertProjectIndex)
+            }
+            
+            fs.writeFileSync(settingsGradlePath, settingsGradleContent)
+            console.log('✅ Added expo-biometrics-sdk to settings.gradle for autolinking')
+          } else {
+            console.warn('⚠️ Could not find suitable location to add expo-biometrics-sdk to settings.gradle')
+          }
+        } else {
+          console.log('✅ expo-biometrics-sdk already configured in settings.gradle')
+        }
+      } else {
+        console.error('❌ settings.gradle not found at:', settingsGradlePath)
+      }
+      
+      return config
+    }
+  ])
+
   // Copy FaceTec SDK AAR to client app's libs directory
   config = withDangerousMod(config, [
     'android',
@@ -198,6 +266,25 @@ export function withAndroidPlugin(config: ExpoConfig) {
                   config.modResults.contents.slice(insertIndex)
               }
             }
+          }
+        }
+      }
+      
+      // Also try to add to the new architecture packages if available
+      if (config.modResults.contents.includes('getReactPackageList()')) {
+        // This is the new architecture method
+        if (!config.modResults.contents.includes('MitraBiometricsSdkPackage')) {
+          const methodStartIndex = config.modResults.contents.indexOf('getReactPackageList()')
+          const braceIndex = config.modResults.contents.indexOf('{', methodStartIndex)
+          if (braceIndex !== -1) {
+            const insertIndex = braceIndex + 1
+            
+            const newPackageLine = '\n        packages.add(new MitraBiometricsSdkPackage());'
+            
+            config.modResults.contents = 
+              config.modResults.contents.slice(0, insertIndex) + 
+              newPackageLine + 
+              config.modResults.contents.slice(insertIndex)
           }
         }
       }

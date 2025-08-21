@@ -1,5 +1,6 @@
-package br.com.mitra.biometricsdk
+package br.com.mitra.biometricsdk.facetec
 
+import android.R
 import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Context
@@ -261,7 +262,7 @@ class SampleAppUtilities(private val sampleAppActivity: SampleAppActivity) {
         val builder = AlertDialog.Builder(
             ContextThemeWrapper(
                 sampleAppActivity,
-                android.R.style.Theme_Holo_Light
+                R.style.Theme_Holo_Light
             )
         )
         builder.setTitle("Select a Theme:")
@@ -284,20 +285,20 @@ class SampleAppUtilities(private val sampleAppActivity: SampleAppActivity) {
             "Config Wizard Theme" -> {}
             "Pseudo-Fullscreen" -> {}
             "Well-Rounded" -> {
-                transitionViewImage = R.drawable.well_rounded_bg
+                transitionViewImage = br.com.mitra.biometricsdk.R.drawable.well_rounded_bg
                 transitionViewTextColor =
                     Config.currentCustomization.getFrameCustomization().backgroundColor
             }
 
             "Bitcoin Exchange" -> {
-                transitionViewImage = R.drawable.bitcoin_exchange_bg
+                transitionViewImage = br.com.mitra.biometricsdk.R.drawable.bitcoin_exchange_bg
                 transitionViewTextColor =
                     Config.currentCustomization.getFrameCustomization().backgroundColor
             }
 
-            "eKYC" -> transitionViewImage = R.drawable.ekyc_bg
+            "eKYC" -> transitionViewImage = br.com.mitra.biometricsdk.R.drawable.ekyc_bg
             "Sample Bank" -> {
-                transitionViewImage = R.drawable.sample_bank_bg
+                transitionViewImage = br.com.mitra.biometricsdk.R.drawable.sample_bank_bg
                 transitionViewTextColor =
                     Config.currentCustomization.getFrameCustomization().backgroundColor
             }
@@ -310,8 +311,8 @@ class SampleAppUtilities(private val sampleAppActivity: SampleAppActivity) {
     }
 
     fun setUpVocalGuidancePlayers() {
-        vocalGuidanceOnPlayer = MediaPlayer.create(sampleAppActivity, R.raw.vocal_guidance_on)
-        vocalGuidanceOffPlayer = MediaPlayer.create(sampleAppActivity, R.raw.vocal_guidance_off)
+        vocalGuidanceOnPlayer = MediaPlayer.create(sampleAppActivity, br.com.mitra.biometricsdk.R.raw.vocal_guidance_on)
+        vocalGuidanceOffPlayer = MediaPlayer.create(sampleAppActivity, br.com.mitra.biometricsdk.R.raw.vocal_guidance_off)
         vocalGuidanceMode = VocalGuidanceMode.OFF
     }
 
@@ -320,7 +321,7 @@ class SampleAppUtilities(private val sampleAppActivity: SampleAppActivity) {
             val alertDialog = AlertDialog.Builder(
                 ContextThemeWrapper(
                     sampleAppActivity,
-                    android.R.style.Theme_Holo_Light
+                    R.style.Theme_Holo_Light
                 )
             ).create()
             alertDialog.setMessage("Vocal Guidance is disabled when the device is muted")
@@ -389,17 +390,17 @@ class SampleAppUtilities(private val sampleAppActivity: SampleAppActivity) {
 
         fun setVocalGuidanceSoundFiles() {
             Config.currentCustomization.vocalGuidanceCustomization.pleaseFrameYourFaceInTheOvalSoundFile =
-                R.raw.please_frame_your_face_sound_file
+                br.com.mitra.biometricsdk.R.raw.please_frame_your_face_sound_file
             Config.currentCustomization.vocalGuidanceCustomization.pleaseMoveCloserSoundFile =
-                R.raw.please_move_closer_sound_file
+                br.com.mitra.biometricsdk.R.raw.please_move_closer_sound_file
             Config.currentCustomization.vocalGuidanceCustomization.pleaseRetrySoundFile =
-                R.raw.please_retry_sound_file
+                br.com.mitra.biometricsdk.R.raw.please_retry_sound_file
             Config.currentCustomization.vocalGuidanceCustomization.uploadingSoundFile =
-                R.raw.uploading_sound_file
+                br.com.mitra.biometricsdk.R.raw.uploading_sound_file
             Config.currentCustomization.vocalGuidanceCustomization.facescanSuccessfulSoundFile =
-                R.raw.facescan_successful_sound_file
+                br.com.mitra.biometricsdk.R.raw.facescan_successful_sound_file
             Config.currentCustomization.vocalGuidanceCustomization.pleasePressTheButtonToStartSoundFile =
-                R.raw.please_press_button_sound_file
+                br.com.mitra.biometricsdk.R.raw.please_press_button_sound_file
 
             when (vocalGuidanceMode) {
                 VocalGuidanceMode.OFF -> Config.currentCustomization.vocalGuidanceCustomization.mode =

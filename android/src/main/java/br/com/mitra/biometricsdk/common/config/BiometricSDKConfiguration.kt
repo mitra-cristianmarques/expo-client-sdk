@@ -1,31 +1,30 @@
 package br.com.mitra.biometricsdk.common.config
 
-import br.com.mitra.biometricsdk.domain.enums.configuration.ConfigurationKeys
-import br.com.mitra.biometricsdk.domain.models.SdkConfiguration
-import br.com.mitra.biometricsdk.domain.models.SdkTheme
+import br.com.mitra.biometricsdk.domain.models.SDKConfiguration
+import br.com.mitra.biometricsdk.domain.models.SDKTheme
 
-object FacetecOptionsConfiguration {
-    private var configuration: SdkConfiguration? = null
-    private var theme: SdkTheme? = null
+object BiometricSDKConfiguration {
+    private var configuration: SDKConfiguration? = null
+    private var theme: SDKTheme? = null
 
-    fun initializeConfguration(theme: SdkTheme, configuration: SdkConfiguration) {
+    fun initializeConfiguration(theme: SDKTheme, configuration: SDKConfiguration) {
         this.theme = theme
         this.configuration = configuration
     }
 
-    fun SetTheme(newTheme: SdkTheme) {
+    fun SetTheme(newTheme: SDKTheme) {
         this.theme = newTheme
     }
 
-    fun SetConfiguration(newConfiguration: SdkConfiguration) {
+    fun SetConfiguration(newConfiguration: SDKConfiguration) {
         this.configuration = newConfiguration
     }
 
-    fun getTheme(): SdkTheme? {
+    fun getTheme(): SDKTheme? {
         return this.theme
     }
 
-    fun getConfiguration(): SdkConfiguration? {
+    fun getConfiguration(): SDKConfiguration? {
         return this.configuration
     }
 }

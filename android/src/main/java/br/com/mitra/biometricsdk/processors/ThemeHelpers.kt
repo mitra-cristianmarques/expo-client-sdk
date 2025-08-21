@@ -5,7 +5,7 @@ import android.graphics.Color
 import android.graphics.Rect
 import android.graphics.Typeface
 import br.com.mitra.biometricsdk.R
-import br.com.mitra.biometricsdk.SampleAppUtilities
+import br.com.mitra.biometricsdk.facetec.SampleAppUtilities
 import com.facetec.sdk.FaceTecCancelButtonCustomization.ButtonLocation
 import com.facetec.sdk.FaceTecCustomization
 import com.facetec.sdk.FaceTecSDK

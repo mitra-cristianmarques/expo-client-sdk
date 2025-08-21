@@ -1,7 +1,7 @@
 // Welcome to the FaceTec Sample App
 // This sample demonstrates Initialization, Liveness Check, Enrollment, Verification, Photo ID Match, Customizing the UX, and Getting Audit Trail Images.
 // Please use our technical support form to submit questions and issue reports:  https://dev.facetec.com/
-package br.com.mitra.biometricsdk
+package br.com.mitra.biometricsdk.facetec
 
 import android.app.Activity
 import android.content.Intent

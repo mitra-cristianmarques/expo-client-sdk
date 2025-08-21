@@ -6,5 +6,5 @@ pluginManagement {
     }
 }
 
-rootProject.name = 'mitra-biometrics-sdk'
-include ':'
+rootProject.name = 'expo-biometrics-sdk'
+include ':expo-biometrics-sdk'

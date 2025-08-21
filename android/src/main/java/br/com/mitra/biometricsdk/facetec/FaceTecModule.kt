@@ -1,4 +1,17 @@
-package br.com.mitra.biometricsdk
+package br.com.mitra.biometricsdk.facetec
+
+import android.app.Activity
+import android.content.Intent
+import android.util.Log
+import com.facebook.react.bridge.*
+import com.facebook.react.bridge.ReactApplicationContext
+import com.facebook.react.bridge.ReactContextBaseJavaModule
+import com.facebook.react.bridge.ReactMethod
+import com.facebook.react.modules.core.ActivityEventListener
+import com.facebook.react.modules.core.BaseActivityEventListener
+import br.com.mitra.biometricsdk.common.config.BiometricSDKConfiguration
+import br.com.mitra.biometricsdk.domain.models.SDKConfiguration
+import br.com.mitra.biometricsdk.domain.models.SDKTheme
 
 class FaceTecModule internal constructor(context: ReactApplicationContext) :
     ReactContextBaseJavaModule(context) {
@@ -62,8 +75,9 @@ class FaceTecModule internal constructor(context: ReactApplicationContext) :
         context.addActivityEventListener(mActivityEventListener)
     }
 
-    val name: String
-        get() = "MitraBiometricsSdk"
+    override fun getName(): String {
+        return "MitraBiometricsSdk"
+    }
 
     @ReactMethod
     fun Facetec(params: ReadableMap, promise: Promise?) {
@@ -116,14 +130,14 @@ class FaceTecModule internal constructor(context: ReactApplicationContext) :
 
 
             // Convert ReadableMap to Map using built-in method
-            val themeMap: MutableMap<String?, Any?> =
-                if (theme != null) theme.toHashMap() else HashMap<String?, Any?>()
-            val optionsMap: MutableMap<String?, Any?> =
-                if (options != null) options.toHashMap() else HashMap<String?, Any?>()
+            val themeMap: MutableMap<String, Any> =
+                if (theme != null) theme.toHashMap() else HashMap<String, Any>()
+            val optionsMap: MutableMap<String, Any> =
+                if (options != null) options.toHashMap() else HashMap<String, Any>()
 
             val configurationTheme: SDKTheme = SDKTheme().fromMap(themeMap)
             val configuration: SDKConfiguration = SDKConfiguration().fromMap(optionsMap)
-            BiometricSDKConfiguration.initializeConfguration(configurationTheme, configuration)
+            BiometricSDKConfiguration.initializeConfiguration(configurationTheme, configuration)
 
             promise.resolve(true)
         } catch (e: Exception) {

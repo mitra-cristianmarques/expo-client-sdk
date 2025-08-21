@@ -1,2 +1,6 @@
-package br.com.mitra.biometricsdk.domain.enums.configuration 
+package br.com.mitra.biometricsdk.domain.enums.configuration
 
+enum class SdkEnvironment {
+    DEVELOPMENT,
+    PRODUCTION
+}
